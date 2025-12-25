@@ -94,3 +94,8 @@ node_modules/
 
 # generated jni files
 bindings/java/wasmedge-java/wasmedge-jni/jni/*.h
+
+# Demo build artifacts
+demo/examples/**/target/
+demo/examples/**/build/
+site/

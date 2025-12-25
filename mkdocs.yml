@@ -1,0 +1,35 @@
+site_name: WasmEdge Creative Demo
+site_description: "Exploratory, descriptive demo of WasmEdge runtime: architecture, examples, visuals, and storytelling."
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+    - scheme: slate
+      primary: indigo
+      accent: amber
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Demos:
+    - Hello WASI (Rust): demos/rust-hello.md
+    - Hello WASI (C): demos/c-hello.md
+    - Serverless-style Function: demos/serverless-function.md
+    - Microservice-style CLI: demos/microservice-cli.md
+    - Edge/IoT Simulation: demos/iot-sim.md
+  - Exploration: exploration.md
+  - Appendix: appendix.md
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - toc:
+      permalink: true

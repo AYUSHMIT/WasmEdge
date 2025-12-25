@@ -1,0 +1,84 @@
+name: Demo Build and Site Deploy
+
+on:
+  push:
+    branches:
+      - copilot/create-demo-site-for-wasmedge
+  workflow_dispatch:
+
+jobs:
+  build-wasmedge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential clang lld graphviz python3 python3-pip
+          python3 -m pip install --upgrade pip
+          python3 -m pip install mkdocs mkdocs-material
+
+      - name: Configure & Build WasmEdge
+        run: |
+          mkdir -p build && cd build
+          cmake -DWASMEDGE_BUILD_TESTS=OFF -DWASMEDGE_BUILD_AOT_RUNTIME=ON ..
+          cmake --build . -- -j$(nproc)
+          sudo cmake --install .
+
+      - name: Rust toolchain for WASI
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Add wasm32-wasi target
+        run: rustup target add wasm32-wasi
+
+      - name: Make scripts executable
+        run: |
+          chmod +x demo/scripts/*.sh
+
+      - name: Generate visualizations
+        run: |
+          ./demo/scripts/generate_visuals.sh
+
+      - name: Build demo examples
+        run: |
+          ./demo/scripts/build_examples.sh
+
+      - name: Run demo examples
+        run: |
+          ./demo/scripts/run_examples.sh
+
+      - name: Build demo docs site
+        run: |
+          mkdocs build
+
+      - name: Upload demo artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-artifacts
+          path: |
+            demo/visuals/**
+            demo/examples/**/target/wasm32-wasi/**/*
+            demo/examples/**/build/**/*.wasm
+            site/**
+
+  deploy-site:
+    needs: build-wasmedge
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: demo-artifacts
+          path: demo_artifacts
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: demo_artifacts/site
+          commit_message: "Deploy demo site"

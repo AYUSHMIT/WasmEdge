@@ -1,0 +1,13 @@
+[package]
+name = "wasmedge_hello"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[lib]
+crate-type = ["cdylib"]
+
+[[bin]]
+name = "wasmedge_hello"
+path = "src/main.rs"
