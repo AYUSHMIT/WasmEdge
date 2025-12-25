@@ -5,9 +5,6 @@ edition = "2021"
 
 [dependencies]
 
-[lib]
-crate-type = ["cdylib"]
-
 [[bin]]
 name = "wasmedge_hello"
 path = "src/main.rs"

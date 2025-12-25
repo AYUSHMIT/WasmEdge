@@ -115,8 +115,8 @@ sudo cmake --install .
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Add wasm32-wasi target
-rustup target add wasm32-wasi
+# Add wasm32-wasip1 target
+rustup target add wasm32-wasip1
 
 # Verify
 rustc --print target-list | grep wasi

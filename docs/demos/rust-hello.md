@@ -36,12 +36,12 @@ The Rust toolchain makes it easy to compile to WebAssembly:
 
 ```bash
 cd demo/examples/rust/hello
-cargo build --release --target wasm32-wasi
+cargo build --release --target wasm32-wasip1
 ```
 
 This produces a `.wasm` file at:
 ```
-target/wasm32-wasi/release/wasmedge_hello.wasm
+target/wasm32-wasip1/release/wasmedge_hello.wasm
 ```
 
 ### Build Configuration
@@ -64,7 +64,7 @@ path = "src/main.rs"
 Execute the WebAssembly module with WasmEdge:
 
 ```bash
-wasmedge demo/examples/rust/hello/target/wasm32-wasi/release/wasmedge_hello.wasm Explorer
+wasmedge demo/examples/rust/hello/target/wasm32-wasip1/release/wasmedge_hello.wasm Explorer
 ```
 
 Output:
@@ -78,11 +78,11 @@ For better performance, compile to native code first:
 
 ```bash
 # Compile Wasm to AOT
-wasmedgec demo/examples/rust/hello/target/wasm32-wasi/release/wasmedge_hello.wasm \
-         demo/examples/rust/hello/target/wasm32-wasi/release/wasmedge_hello.aot.wasm
+wasmedgec demo/examples/rust/hello/target/wasm32-wasip1/release/wasmedge_hello.wasm \
+         demo/examples/rust/hello/target/wasm32-wasip1/release/wasmedge_hello.aot.wasm
 
 # Run AOT-compiled module
-wasmedge demo/examples/rust/hello/target/wasm32-wasi/release/wasmedge_hello.aot.wasm Explorer
+wasmedge demo/examples/rust/hello/target/wasm32-wasip1/release/wasmedge_hello.aot.wasm Explorer
 ```
 
 The AOT-compiled version:
