@@ -29,6 +29,26 @@ WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime.
 🛠 Manage and orchestrate Wasm runtimes using [Kubernetes](https://wasmedge.org/docs/category/deploy-wasmedge-apps-in-kubernetes), [data streaming frameworks](https://wasmedge.org/docs/embed/use-case/yomo), and [blockchains](https://medium.com/ethereum-on-steroids/running-ethereum-smart-contracts-in-a-substrate-blockchain-56fbc27fc95a) \
 📚 **[Check out our official documentation](https://wasmedge.org/docs/)**
 
+## 🎨 Interactive Demo Site
+
+Explore WasmEdge through our **[Creative Exploratory Demo](https://ayushmit.github.io/WasmEdge/)** featuring:
+
+- 📖 **Narrative guides** with beautiful visualizations
+- 🚀 **Hands-on examples**: Hello WASI (Rust & C), serverless functions, microservices, IoT simulation
+- 📊 **Visual insights**: Architecture diagrams, language composition, performance comparisons
+- ⚡ **Live demos**: Build and run WebAssembly modules with WasmEdge
+
+**Quick start with demos:**
+```bash
+# Build the examples
+./demo/scripts/build_examples.sh
+
+# Run all demos
+./demo/scripts/run_examples.sh
+```
+
+See [demo/README.md](demo/README.md) for more details.
+
 # Introduction
 
 The WasmEdge Runtime provides a well-defined execution sandbox for its contained WebAssembly bytecode program. The runtime offers isolation and protection for operating system resources (e.g., file system, sockets, environment variables, processes) and memory space. The most important use case for WasmEdge is to safely execute user-defined or community-contributed code as plug-ins in a software product (e.g., SaaS, software-defined vehicles, edge nodes, or even blockchain nodes). It enables third-party developers, vendors, suppliers, and community members to extend and customize the software product. **[Learn more here](https://wasmedge.org/docs/contribute/users)**
