@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <title>WasmEdge Language Composition</title>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="400.0" y="40" text-anchor="middle" font-size="24" font-weight="bold" font-family="Arial">
+    WasmEdge Language Composition
+  </text>
+  <path d="M 300,300 L 500.0,300.0 A 200,200 0 1,1 478.20130483767355,209.2019000520906 Z" fill="#5470C6" stroke="white" stroke-width="2"/>
+  <rect x="550" y="100" width="30" height="20" fill="#5470C6"/>
+  <text x="590" y="115" font-size="14" font-family="Arial">C++: 92.5%</text>
+  <path d="M 300,300 L 478.20130483767355,209.2019000520906 A 200,200 0 0,1 488.1761537908451,232.25241595094172 Z" fill="#91CC75" stroke="white" stroke-width="2"/>
+  <rect x="550" y="140" width="30" height="20" fill="#91CC75"/>
+  <text x="590" y="155" font-size="14" font-family="Arial">C: 2.0%</text>
+  <path d="M 300,300 L 488.1761537908451,232.25241595094172 A 200,200 0 0,1 493.7166322257262,250.26202256702894 Z" fill="#FAC858" stroke="white" stroke-width="2"/>
+  <rect x="550" y="180" width="30" height="20" fill="#FAC858"/>
+  <text x="590" y="195" font-size="14" font-family="Arial">CMake: 1.5%</text>
+  <path d="M 300,300 L 493.7166322257262,250.26202256702894 A 200,200 0 0,1 497.5376681190275,268.7131069919536 Z" fill="#EE6666" stroke="white" stroke-width="2"/>
+  <rect x="550" y="220" width="30" height="20" fill="#EE6666"/>
+  <text x="590" y="235" font-size="14" font-family="Arial">Shell: 1.5%</text>
+  <path d="M 300,300 L 497.5376681190275,268.7131069919536 A 200,200 0 0,1 499.112392920616,281.17833733629703 Z" fill="#73C0DE" stroke="white" stroke-width="2"/>
+  <rect x="550" y="260" width="30" height="20" fill="#73C0DE"/>
+  <text x="590" y="275" font-size="14" font-family="Arial">Python: 1.0%</text>
+  <path d="M 300,300 L 499.112392920616,281.17833733629703 A 200,200 0 0,1 499.6053456856543,287.4418960941372 Z" fill="#3BA272" stroke="white" stroke-width="2"/>
+  <rect x="550" y="300" width="30" height="20" fill="#3BA272"/>
+  <text x="590" y="315" font-size="14" font-family="Arial">Rust: 0.5%</text>
+  <path d="M 300,300 L 499.6053456856543,287.4418960941372 A 200,200 0 0,1 500.0,299.99999999999994 Z" fill="#FC8452" stroke="white" stroke-width="2"/>
+  <rect x="550" y="340" width="30" height="20" fill="#FC8452"/>
+  <text x="590" y="355" font-size="14" font-family="Arial">Other: 1.0%</text>
+</svg>

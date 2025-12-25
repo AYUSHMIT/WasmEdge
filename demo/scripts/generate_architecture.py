@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+"""
+Generate architecture diagram for WasmEdge
+"""
+import sys
+
+def generate_architecture_diagram():
+    svg = '''<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
+  <title>WasmEdge Architecture</title>
+  <defs>
+    <style>
+      .box { fill: white; stroke: #333; stroke-width: 2; }
+      .header { fill: #5470C6; stroke: #333; stroke-width: 2; }
+      .plugin { fill: #91CC75; stroke: #333; stroke-width: 2; }
+      .runtime { fill: #FAC858; stroke: #333; stroke-width: 2; }
+      .text { font-family: Arial; font-size: 14px; fill: #333; }
+      .title { font-family: Arial; font-size: 16px; font-weight: bold; fill: white; }
+      .main-title { font-family: Arial; font-size: 24px; font-weight: bold; fill: #333; }
+      .arrow { stroke: #666; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666" />
+    </marker>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#f9f9f9"/>
+  
+  <text x="500" y="40" text-anchor="middle" class="main-title">WasmEdge Architecture</text>
+  
+  <!-- Host Application Layer -->
+  <rect x="50" y="80" width="900" height="80" class="header"/>
+  <text x="500" y="110" text-anchor="middle" class="title">Host Application</text>
+  <text x="500" y="135" text-anchor="middle" class="text" fill="white">Go / Rust / C / Python / JavaScript Applications</text>
+  
+  <!-- WasmEdge Runtime Core -->
+  <rect x="100" y="200" width="800" height="180" class="runtime"/>
+  <text x="500" y="230" text-anchor="middle" class="title">WasmEdge Runtime Core</text>
+  
+  <rect x="130" y="250" width="200" height="60" class="box"/>
+  <text x="230" y="275" text-anchor="middle" class="text">Validator</text>
+  <text x="230" y="295" text-anchor="middle" class="text" font-size="12">Validates Wasm modules</text>
+  
+  <rect x="370" y="250" width="200" height="60" class="box"/>
+  <text x="470" y="275" text-anchor="middle" class="text">Executor</text>
+  <text x="470" y="295" text-anchor="middle" class="text" font-size="12">Interpreter & AOT</text>
+  
+  <rect x="610" y="250" width="200" height="60" class="box"/>
+  <text x="710" y="275" text-anchor="middle" class="text">Memory Manager</text>
+  <text x="710" y="295" text-anchor="middle" class="text" font-size="12">Safe memory isolation</text>
+  
+  <!-- Plugins & Extensions -->
+  <rect x="100" y="420" width="350" height="200" class="plugin"/>
+  <text x="275" y="450" text-anchor="middle" class="title">Plugins & Extensions</text>
+  
+  <rect x="130" y="470" width="140" height="50" class="box"/>
+  <text x="200" y="500" text-anchor="middle" class="text">WASI</text>
+  
+  <rect x="290" y="470" width="140" height="50" class="box"/>
+  <text x="360" y="500" text-anchor="middle" class="text">Network Sockets</text>
+  
+  <rect x="130" y="540" width="140" height="50" class="box"/>
+  <text x="200" y="570" text-anchor="middle" class="text">AI/ML (Torch, TF)</text>
+  
+  <rect x="290" y="540" width="140" height="50" class="box"/>
+  <text x="360" y="570" text-anchor="middle" class="text">Database Drivers</text>
+  
+  <!-- WebAssembly Modules -->
+  <rect x="550" y="420" width="350" height="200" class="header"/>
+  <text x="725" y="450" text-anchor="middle" class="title">WebAssembly Modules</text>
+  
+  <rect x="580" y="470" width="140" height="50" class="box"/>
+  <text x="650" y="495" text-anchor="middle" class="text">Rust Wasm</text>
+  
+  <rect x="740" y="470" width="140" height="50" class="box"/>
+  <text x="810" y="495" text-anchor="middle" class="text">C/C++ Wasm</text>
+  
+  <rect x="580" y="540" width="140" height="50" class="box"/>
+  <text x="650" y="565" text-anchor="middle" class="text">AssemblyScript</text>
+  
+  <rect x="740" y="540" width="140" height="50" class="box"/>
+  <text x="810" y="565" text-anchor="middle" class="text">JavaScript/Wasm</text>
+  
+  <!-- Arrows -->
+  <path d="M 500 160 L 500 200" class="arrow"/>
+  <path d="M 275 380 L 275 420" class="arrow"/>
+  <path d="M 725 380 L 725 420" class="arrow"/>
+  <path d="M 450 380 L 400 420" class="arrow"/>
+  <path d="M 550 380 L 600 420" class="arrow"/>
+  
+  <text x="500" y="660" text-anchor="middle" class="text" font-style="italic">
+    Data flows between host, runtime core, plugins, and WebAssembly modules
+  </text>
+</svg>'''
+    
+    return svg
+
+if __name__ == '__main__':
+    output_path = sys.argv[1] if len(sys.argv) > 1 else 'demo/visuals/architecture.svg'
+    svg_content = generate_architecture_diagram()
+    
+    with open(output_path, 'w') as f:
+        f.write(svg_content)
+    
+    print(f"Architecture diagram generated: {output_path}")
